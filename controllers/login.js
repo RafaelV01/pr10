@@ -23,10 +23,10 @@ import { getData } from "./data.js";
             const user = userData.data();
             if (user.adm) {
               // Redirigir a la parte de administrador si adm es true
-              window.location.href = "./templates/admin.html";
+              window.location.href = "/pr2/templates/admin.html";
             } else {
               // Redirigir a la parte de usuario normal si adm es false
-              window.location.href = "./templates/home.html";
+              window.location.href = "/pr2/templates/inicio.html";
             }
           } else {
             alert("Usuario no encontrado en la base de datos");
@@ -52,7 +52,7 @@ import { getData } from "./data.js";
     });
     loginFacebookBtn.addEventListener("click", () => {
       signInPopup(facebookProvider).then(() => {
-        window.location.href = "./templates/home.html";
+        window.location.href = "./pr2/templates/inicio.html";
       }).catch(error => {
         console.error("Error during Facebook sign-in:", error);
       });

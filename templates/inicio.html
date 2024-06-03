@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Bolsos</title>
+    <link rel="stylesheet" href="/pr2/styles/admin.css"">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+   
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="/pr2/resources/img/logo.png" alt="Logo de la tienda" class="logo">
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="./templates/categorias/mujer.html">MUJER</a></li>
+                    <li><a href="./templates/categorias/hombre.html">HOMBRE</a></li>
+                    <li><a href="./templates/categorias/nina.html">NIÑA</a></li>
+                    <li><a href="./templates/categorias/nino.html">NIÑO</a></li>
+                    <li><a href="./templates/categorias/unisex.html">UNISEX</a></li>
+                    <li><a href="./templates/categorias/mascotas.html">MASCOTAS</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <a href="/pr2/templates/login.html" class="login"><i class="fas fa-user"></i></a>
+                <a href="/pr2/templates/categorias/carrito.html" class="cart"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></a>
+                <!-- Icono de opciones -->
+                <a href="/pr2/templates/admin.html" class="options-icon"><i class="fas fa-cog"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <section class="featured-products">
+            <div class="container">
+                <h2>Descubre Nuestros Bolsos</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="product" onclick="showProductDetails('Amapola', 'Sumérgete en la dulzura y elegancia de nuestro bolso Amapola. Confeccionado con materiales de alta calidad y diseñado en tonos pasteles suaves, este bolso no solo es una declaración de estilo, sino también un accesorio funcional para el día a día. Su diseño moderno y sofisticado lo convierte en el complemento perfecto para cualquier ocasión, desde salidas casuales hasta eventos especiales. Lleva contigo lo esencial con comodidad y estilo con nuestro bolso.', '$120.000', 'resources/img/producto1.jpg')">
+                            <img src="resources/img/producto1.jpg" alt="Producto 1">
+                            <h3>Amapola</h3>
+                            <p>$120.000</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="product" onclick="showProductDetails('Chanel', 'Elegancia atemporal y sofisticación se combinan en este bolso Chanel negro. Confeccionado con los más finos materiales y meticulosamente diseñado para destacar en cualquier ocasión, este bolso es el accesorio perfecto para la mujer moderna y elegante. Su diseño clásico y funcional ofrece un amplio espacio interior y detalles icónicos de Chanel, como el logo entrelazado y el acabado en cuero de primera calidad. Ideal para añadir un toque de lujo a tu estilo diario o nocturno.', '$140.000', 'resources/img/producto2.jpeg')">
+                            <img src="resources/img/producto2.jpeg" alt="Producto 2">
+                            <h3>Chanel</h3>
+                            <p>$145.000</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="product" onclick="showProductDetails('Versátil', 'Descubre el bolso Versátil, tu compañero perfecto para cualquier ocasión casual. Con un diseño elegante y funcional, este bolso combina estilo y practicidad. Equipado con compartimentos espaciosos y un diseño moderno, el bolso Versátil te permite llevar todo lo que necesitas con estilo y comodidad. Perfecto para acompañarte en tus jornadas diarias con un toque de sofisticación casual.', '$110.000', 'resources/img/producto3.webp')">
+                            <img src="resources/img/producto3.webp" alt="Producto 3">
+                            <h3>Versátil</h3>
+                            <p>$110.000</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="product" onclick="showProductDetails('Radiante', '¡Ilumina tu estilo con el bolso! Este encantador bolso de color rosado Barbie es perfecto para destacar tu lado más vibrante y femenino. Con un diseño elegante y moderno, este bolso es ideal para cualquier ocasión, ya sea para el día a día o para eventos especiales. Su tono radiante añadirá un toque de alegría y frescura a tu outfit. ¡Haz que tu look brille con el bolso!', '$100.000', 'resources/img/categoria1.webp')">
+                            <img src="resources/img/categoria1.webp" alt="Producto 4">
+                            <h3>Radiante</h3>
+                            <p>$100.000</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="product" onclick="showProductDetails('Mickey Niño', 'Bolso Infantil Para Niño', '$80.000', 'resources/img/producto9.webp')">
+                            <img src="resources/img/producto9.webp" alt="Producto 5">
+                            <h3>Mickey Niño</h3>
+                            <p>$80.000</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="product" onclick="showProductDetails('Vintage Caballero', 'Bolso de lado para caballero en cuero.', '$135.000', 'resources/img/producto6.jpeg')">
+                            <img src="resources/img/producto6.jpeg" alt="Producto 6">
+                            <h3>Vintage Caballero</h3>
+                            <p>$135.000</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="product" onclick="showProductDetails('Transportadora Mascotas', 'Ideal para llevar a tu mascota de paseo.', '$180.000', 'resources/img/producto7.jpeg')">
+                            <img src="resources/img/producto7.jpeg" alt="Producto 7">
+                            <h3>Transportadora Mascotas</h3>
+                            <p>$180.000</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="product" onclick="showProductDetails('Bolso Unisex', 'Ideal para ti y tu pareja.', '$70.000', 'resources/img/producto10.jpg')">
+                            <img src="resources/img/producto10.jpg" alt="Producto 8">
+                            <h3>Bolso Unisex</h3>
+                            <p>$70.000</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="product" onclick="showProductDetails('Mariposa Niña', 'Hermoso bolso rosado para niña.', '$90.000', 'resources/img/producto11.jpg')">
+                            <img src="resources/img/producto11.jpg" alt="Producto 9">
+                            <h3>Mariposa Niña</h3>
+                            <p>$90.000</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+    </div>
+
+     <!-- Modal de Bootstrap -->
+    <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModalLabel">Nombre del Producto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="product-details-img">
+                        <img src="" alt="Imagen del producto" id="modal-product-img" class="img-fluid">
+                    </div>
+                    <h2 id="modal-product-title">Nombre del Producto</h2>
+                    <p id="modal-product-description">Descripción detallada del producto.</p>
+                    <p id="modal-product-price">Precio: $99.99</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" onclick="addToCart()">Agregar al carrito</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <section id="somos">
+                <h3>Somos</h3>
+                <p>Somos una tienda web de bolsos llamada 'Bagstyle'.</p>
+            </section>
+            <section id="contacto">
+                <h3>Contacto</h3>
+                <p>Email: referencia.bagstyle@gmail.co</p>
+                <p>Tel: 608 35 71 97 o Cel: 314-895-7684</p>
+            </section>
+            <p>&copy; 2024 Bags Style. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="controllers/script.js"></script>
+    <script>
+        // Función para mostrar los detalles del producto en un modal
+        function showProductDetails(title, description, price, imgSrc) {
+            // Actualiza los detalles del producto con los datos proporcionados
+            document.getElementById('modal-product-title').innerText = title;
+            document.getElementById('modal-product-description').innerText = description;
+            document.getElementById('modal-product-price').innerText = `Precio: ${price}`;
+            document.getElementById('modal-product-img').src = imgSrc;
+
+            // Actualiza el título del modal
+            document.querySelector('.modal-title').innerText = title;
+
+            // Abre el modal
+            $('#productModal').modal('show');
+        }
+    </script>
+</body>
+</html>

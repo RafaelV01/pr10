@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   onAuthChanged((user) => {
     if (!user) {
-      window.location.href = "../index.html";
+      window.location.href = "/pr2/index.html";
     } else {
       currentUser = user;
       getData(user.uid).then((e) => {

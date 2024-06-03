@@ -3,40 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de Bolsos</title>
-    <link rel="stylesheet" href="/pr2/styles/admin.css">
+    <title>Catálogo de Bolsos Unisex</title>
+    <link rel="stylesheet" href="/pr2/styles/admin.css"">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-   
 </head>
 <body>
     <header>
         <div class="header-container">
             <div class="logo-container">
-                <img src="/pr2/resources/img/logo.png" alt="Logo de la tienda" class="logo">
+                <a href="/pr2/index.html">
+                    <img src="/pr2/resources/img/logo.png" alt="Logo de la tienda" class="logo">
+                </a>
             </div>
             <nav class="navbar">
                 <ul>
-                    <li><a href="./templates/categorias/mujer.html">MUJER</a></li>
-                    <li><a href="./templates/categorias/hombre.html">HOMBRE</a></li>
-                    <li><a href="./templates/categorias/nina.html">NIÑA</a></li>
-                    <li><a href="./templates/categorias/nino.html">NIÑO</a></li>
-                    <li><a href="./templates/categorias/unisex.html">UNISEX</a></li>
-                    <li><a href="./templates/categorias/mascotas.html">MASCOTAS</a></li>
+                    <li><a href="mujer.html">MUJER</a></li>
+                    <li><a href="hombre.html">HOMBRE</a></li>
+                    <li><a href="nina.html">NIÑA</a></li>
+                    <li><a href="nino.html">NIÑO</a></li>
+                    <li><a href="unisex.html">UNISEX</a></li>
+                    <li><a href="mascotas.html">MASCOTAS</a></li>
                 </ul>
             </nav>
             <div class="header-icons">
                 <a href="/pr2/templates/login.html" class="login"><i class="fas fa-user"></i></a>
                 <a href="/pr2/templates/categorias/carrito.html" class="cart"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></a>
-                <!-- Icono de opciones -->
                 <a href="/pr2/templates/admin.html" class="options-icon"><i class="fas fa-cog"></i></a>
             </div>
         </div>
     </header>
 
     <div class="main-content">
-        <!-- Agrega el elemento product-list -->
-        <ul id="products-list"></ul>
+        <section class="featured-products">
+            <div class="container">
+                <h2 class="titulo">Bolsos Unisex</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="product" onclick="showProductDetails('Unisex 1', 'Ideal para ti y tu pareja.', '$150.000', '/pr2/resources/img/bolsounisex1.jpeg')">
+                            <img src="/pr2/resources/img/bolsounisex1.jpeg" alt="Producto 1">
+                            <h3>Unisex 1</h3>
+                            <p>$150.000</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="product" onclick="showProductDetails('Unisex 2', 'Ideal para ti y tu pareja.', '$130.000', '/pr2/resources/img/bolsounisex2.jpeg')">
+                            <img src="/pr2/resources/img/bolsounisex2.jpeg" alt="Producto 2">
+                            <h3>Unisex 2</h3>
+                            <p>$130.000</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
     <!-- Modal de Bootstrap -->

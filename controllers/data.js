@@ -7,48 +7,53 @@ import {
   getDoc,
   getDocs,
   deleteDoc,
-  updateDoc // Agrega la función updateDoc para actualizar datos
+  updateDoc
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
 const db = getFirestore(app);
 
 export { db }; 
 
-export const getAllUsers = async () => {
-  const usersSnapshot = await getDocs(collection(db, "users"));
-  const usersList = [];
-  usersSnapshot.forEach((doc) => {
-    usersList.push({ id: doc.id, ...doc.data() }); // Incluye el ID del documento
+export const getAllProducts = async () => {
+  const productsSnapshot = await getDocs(collection(db, "productos"));
+  const productsList = [];
+  productsSnapshot.forEach((doc) => {
+    productsList.push({ id: doc.id, ...doc.data() }); // Incluye el ID del documento
   });
-  return usersList;
+  return productsList;
 };
 
-export const addData = async (id, fullName, email, cc, imageUrl) => 
-  await setDoc(doc(collection(db, "users"), id), {
-    id: id,
-    fullName: fullName,
-    email: email,
-    adm: false,
-    cc: cc,
-    imageUrl: imageUrl // Agrega la URL de la imagen
-  });
-
-// Función para obtener datos de un usuario específico
-export const getData = async (id) => await getDoc(doc(db, "users", id));
-
-// Función para eliminar datos de un usuario
-export const deleteDataUser = async (id) => 
-  await deleteDoc(doc(db, "users", id));
-
-// Función para actualizar datos de un usuario
-export const updateUserData = async (id, newData) => {
+export const addProduct = async (id, name, description, price, imageUrl) => {
   try {
-    const userRef = doc(db, "users", id);
-    await updateDoc(userRef, newData);
-    console.log("Datos de usuario actualizados correctamente.");
+    await setDoc(doc(collection(db, "productos"), id), {
+      id: id,
+      name: name,
+      description: description,
+      price: price,
+      addm : false,
+      imageUrl: imageUrl // Agrega la URL de la imagen
+    });
+    console.log("Producto agregado correctamente a la base de datos.");
     return true;
   } catch (error) {
-    console.error("Error al actualizar datos del usuario:", error);
+    console.error("Error al agregar producto:", error);
+    return false;
+  }
+};
+
+export const getProductData = async (id) => await getDoc(doc(db, "productos", id));
+
+export const deleteProduct = async (id) => 
+  await deleteDoc(doc(db, "productos", id));
+
+export const updateProductData = async (id, newData) => {
+  try {
+    const productRef = doc(db, "productos", id);
+    await updateDoc(productRef, newData);
+    console.log("Datos del producto actualizados correctamente.");
+    return true;
+  } catch (error) {
+    console.error("Error al actualizar datos del producto:", error);
     return false;
   }
 };

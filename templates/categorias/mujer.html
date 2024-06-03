@@ -3,40 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de Bolsos</title>
-    <link rel="stylesheet" href="/pr2/styles/admin.css">
+    <title>Catálogo de Bolsos para Mujer</title>
+    <link rel="stylesheet" href="/pr2/styles/admin.css"">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-   
 </head>
 <body>
     <header>
         <div class="header-container">
             <div class="logo-container">
-                <img src="/pr2/resources/img/logo.png" alt="Logo de la tienda" class="logo">
+                <a href="/pr2/index.html">
+                    <img src="/pr2/resources/img/logo.png" alt="Logo de la tienda" class="logo">
+                </a>
             </div>
             <nav class="navbar">
                 <ul>
-                    <li><a href="./templates/categorias/mujer.html">MUJER</a></li>
-                    <li><a href="./templates/categorias/hombre.html">HOMBRE</a></li>
-                    <li><a href="./templates/categorias/nina.html">NIÑA</a></li>
-                    <li><a href="./templates/categorias/nino.html">NIÑO</a></li>
-                    <li><a href="./templates/categorias/unisex.html">UNISEX</a></li>
-                    <li><a href="./templates/categorias/mascotas.html">MASCOTAS</a></li>
+                    <li><a href="mujer.html">MUJER</a></li>
+                    <li><a href="hombre.html">HOMBRE</a></li>
+                    <li><a href="nina.html">NIÑA</a></li>
+                    <li><a href="nino.html">NIÑO</a></li>
+                    <li><a href="unisex.html">UNISEX</a></li>
+                    <li><a href="mascotas.html">MASCOTAS</a></li>
                 </ul>
             </nav>
             <div class="header-icons">
                 <a href="/pr2/templates/login.html" class="login"><i class="fas fa-user"></i></a>
                 <a href="/pr2/templates/categorias/carrito.html" class="cart"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></a>
-                <!-- Icono de opciones -->
                 <a href="/pr2/templates/admin.html" class="options-icon"><i class="fas fa-cog"></i></a>
             </div>
         </div>
     </header>
 
     <div class="main-content">
-        <!-- Agrega el elemento product-list -->
-        <ul id="products-list"></ul>
+        <section class="featured-products">
+            <div class="container">
+                <h2 class="titulo">Bolsos para Mujer</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="product" onclick="showProductDetails('Bolso Mujer 1', 'Adorna con elegancia.', '$120.000', '/pr2/resources/img/bolsomujer1.jpeg')">
+                            <img src="/pr2/resources/img/bolsomujer1.jpeg" alt="Producto 1">
+                            <h3>Bolso Mujer 1</h3>
+                            <p>$120.000</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="product" onclick="showProductDetails('Bolso Mujer 2', 'Adorna con elegancia.', '$110.000', '/pr2/resources/img/bolsomujer2.jpg')">
+                            <img src="/pr2/resources/img/bolsomujer2.jpg" alt="Producto 2">
+                            <h3>Bolso Mujer 2</h3>
+                            <p>$110.000</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="product" onclick="showProductDetails('Bolso Mujer 3', 'Adorna con elegancia.', '$95.000', '/pr2/resources/img/bolsomujer3.jpeg')">
+                            <img src="/pr2/resources/img/bolsomujer3.jpeg" alt="Producto 3">
+                            <h3>Bolso Mujer 3</h3>
+                            <p>$95.000</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="product" onclick="showProductDetails('Bolso Mujer 4', 'Adorna con elegancia.', '$130.000', '/pr2/resources/img/bolsomujer4.jpg')">
+                            <img src="/pr2/resources/img/bolsomujer4.jpg" alt="Producto 4">
+                            <h3>Bolso Mujer 4</h3>
+                            <p>$130.000</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="product" onclick="showProductDetails('Bolso Mujer 5', 'Adorna con elegancia.', '$150.000', '/pr2/resources/img/bolsomujer5.webp')">
+                            <img src="/pr2/resources/img/bolsomujer5.webp" alt="Producto 5">
+                            <h3>Bolso Mujer 5</h3>
+                            <p>$150.000</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="product" onclick="showProductDetails('Bolso Mujer 6', 'Adorna con elegancia.', '$180.000', '/pr2/resources/img/bolsomujer6.jpg')">
+                            <img src="/pr2/resources/img/bolsomujer6.jpg" alt="Producto 6">
+                            <h3>Bolso Mujer 6</h3>
+                            <p>$180.000</p>
+                        </div>
+                    </div>
+                    <!-- Más productos aquí -->
+                </div>
+            </div>
+        </section>
     </div>
 
     <!-- Modal de Bootstrap -->
