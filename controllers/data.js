@@ -18,18 +18,19 @@ export const getAllUsers = async () => {
   const usersSnapshot = await getDocs(collection(db, "users"));
   const usersList = [];
   usersSnapshot.forEach((doc) => {
-    usersList.push(doc.data());
+    usersList.push({ id: doc.id, ...doc.data() }); // Incluye el ID del documento
   });
   return usersList;
 };
 
-export const addData = async (id, fullName, email, cc) => 
+export const addData = async (id, fullName, email, cc, imageUrl) => 
   await setDoc(doc(collection(db, "users"), id), {
     id: id,
     fullName: fullName,
     email: email,
     adm: false,
-    cc: cc 
+    cc: cc,
+    imageUrl: imageUrl // Agrega la URL de la imagen
   });
 
 // Función para obtener datos de un usuario específico

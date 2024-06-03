@@ -1,7 +1,7 @@
 import { getAllUsers, addData, deleteDataUser, getData, db } from "./data.js";
-import { logOut, createUserEmailPassword, sendEmail } from "./global.js";
+import { logOut, createUserEmailPassword, sendEmail, archivoimg } from "./global.js";
 import { setDoc, collection, doc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
-import { getStorage } from "firebase/storage";
+
 const logoutBtn = document.getElementById("logout-btn");
 const viewUsersBtn = document.getElementById("view-users-btn");
 const createUserBtn = document.getElementById("create-user-btn");
@@ -92,6 +92,16 @@ document.addEventListener("DOMContentLoaded", () => {
     ccInput.name = "cc";
     ccInputCell.appendChild(ccInput);
 
+    const imageRow = table.insertRow();
+    const imageLabel = imageRow.insertCell();
+    imageLabel.textContent = "Imagen:";
+    const imageInputCell = imageRow.insertCell();
+    const imageInput = document.createElement("input");
+    imageInput.type = "file";
+    imageInput.id = "fileimg";
+    imageInput.name = "fileimg";
+    imageInputCell.appendChild(imageInput);
+
     const createButton = document.createElement("button");
     createButton.textContent = "Crear Usuario";
     createButton.addEventListener("click", async (e) => {
@@ -100,7 +110,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const userCredential = await createUserEmailPassword(emailInput.value, passwordInput.value);
         const user = userCredential.user;
         await sendEmail(user);
-        await addData(user.uid, fullNameInput.value, emailInput.value, ccInput.value);
+
+        let archivourl = '';
+        const urlimagen = document.getElementById('fileimg').files[0];
+        if (urlimagen) {
+          archivourl = await archivoimg(urlimagen, fullNameInput.value);
+        }
+
+        await addData(user.uid, fullNameInput.value, emailInput.value, ccInput.value, archivourl);
         alert("Usuario creado correctamente. Se ha enviado un correo de verificación.");
         card.remove();
       } catch (error) {
@@ -176,26 +193,18 @@ document.addEventListener("DOMContentLoaded", () => {
     updateButton.textContent = "Actualizar";
     updateButton.addEventListener("click", async (e) => {
       e.preventDefault();
-      const newData = {};
-
-      if (nameInput.value.trim() !== '') {
-        newData.fullName = nameInput.value;
-      }
-      if (emailInput.value.trim() !== '') {
-        newData.email = emailInput.value;
-      }
-      if (ccInput.value.trim() !== '') {
-        newData.cc = ccInput.value;
-      }
-
       try {
-        if (Object.keys(newData).length !== 0) {
-          await setDoc(doc(collection(db, "users"), userId), newData, { merge: true });
-          alert("Datos del usuario actualizados correctamente.");
-          location.reload();
-        } else {
-          alert("No se han realizado cambios.");
-        }
+        const docRef = doc(db, "usuarios", userId);
+        await setDoc(docRef, {
+          fullName: nameInput.value || userData.fullName,
+          email: emailInput.value || userData.email,
+          cc: ccInput.value || userData.cc
+        }, { merge: true });
+
+        alert("Datos de usuario actualizados.");
+        card.remove();
+        const users = await getAllUsers();
+        renderUsers(users);
       } catch (error) {
         console.error("Error al actualizar datos del usuario:", error.message);
         alert("Error al actualizar datos del usuario. Consulte la consola para más detalles.");
@@ -218,18 +227,32 @@ document.addEventListener("DOMContentLoaded", () => {
     usersListElement.innerHTML = "";
     users.forEach((user) => {
       const listItem = document.createElement("li");
-      listItem.textContent = `ID: ${user.id}, Nombre: ${user.fullName}, Email: ${user.email}, CC: ${user.cc}`;
+      listItem.className = "user-list-item";
+
+      if (user.imageUrl) {
+        const userImage = document.createElement("img");
+        userImage.src = user.imageUrl;
+        userImage.alt = `Imagen de ${user.fullName}`;
+        userImage.className = "user-image";
+        listItem.appendChild(userImage);
+      }
+
+      const userInfo = document.createElement("div");
+      userInfo.textContent = `ID: ${user.id}, Nombre: ${user.fullName}, Email: ${user.email}, CC: ${user.cc}`;
+      userInfo.className = "user-info";
 
       const editButton = document.createElement("button");
       editButton.textContent = "Editar";
       editButton.className = "edit-button";
       editButton.addEventListener("click", () => edit_user(user.id));
-      listItem.appendChild(editButton);
 
       const deleteButton = document.createElement("button");
       deleteButton.textContent = "Eliminar";
       deleteButton.className = "delete-button";
       deleteButton.addEventListener("click", () => delete_data(user.id));
+
+      listItem.appendChild(userInfo);
+      listItem.appendChild(editButton);
       listItem.appendChild(deleteButton);
 
       usersListElement.appendChild(listItem);
